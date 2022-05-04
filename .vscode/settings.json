@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/f734a258-75ce-4928-b870-acf02ea99b4c/resourceGroups/msdocs-expressjs-mongodb-resourcegroup/providers/Microsoft.Web/sites/msdocs-expressjs-mongodb-427",
+    "appService.deploySubpath": "."
+}
