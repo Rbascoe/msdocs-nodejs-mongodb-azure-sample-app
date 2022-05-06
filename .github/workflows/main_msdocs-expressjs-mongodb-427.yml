@@ -33,9 +33,36 @@ jobs:
           name: node-app
           path: .
 
+  dev:
+    runs-on: ubuntu-latest
+    environment:
+      name: 'DEV'
+    needs: build
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run a script
+        run: |
+          echo "I am running a job in the Dev environment"
+
+  QA:
+    runs-on: ubuntu-latest
+    environment:
+      name: 'QA'
+    needs: dev
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run a script
+        run: |
+          echo "I am running a job in the QA environment"
+
   deploy:
     runs-on: ubuntu-latest
-    needs: build
+    # needs: build
+    needs: QA
     environment:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
